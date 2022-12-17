@@ -1,0 +1,118 @@
+﻿<Window x:Class="CinemaWithMVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaWithMVVM"
+        mc:Ignorable="d"
+        Height="650"
+        MinWidth="500"
+        Title="Cinema"
+        MinHeight="600"
+        Name="Window"
+        WindowStartupLocation="CenterScreen"
+        Width="1000">
+    <Border Background="{StaticResource backColor}">
+        <Grid Margin="50"
+              Background="#1A2127">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0"
+                       Padding="10 0"
+                       Content="Discover"
+                       VerticalAlignment="Stretch"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="{StaticResource TitleSize}"/>
+
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Center">
+                    <Label Content="POPULAR"
+                           FontWeight="Medium"
+                           Foreground="White"
+                           FontSize="{StaticResource labelSize}"
+                           VerticalAlignment="Center"/>
+                    <Label Content="TREND"
+                           FontWeight="Medium"
+                           Foreground="{StaticResource foreColorTitle}"
+                           FontSize="{StaticResource labelSize}"
+                           VerticalAlignment="Center"/>
+                    <Label Content="NEWEST"
+                           FontWeight="Medium"
+                           Foreground="{StaticResource foreColorTitle}"
+                           FontSize="{StaticResource labelSize}"
+                           VerticalAlignment="Center"/>
+                    <Label Content="TOP RATED"
+                           FontWeight="Medium"
+                           Foreground="{StaticResource foreColorTitle}"
+                           FontSize="{StaticResource labelSize}"
+                           VerticalAlignment="Center"/>
+
+
+                </StackPanel>
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="1"
+                            Command="{Binding SearchCommand}"
+                            CommandParameter="{Binding ElementName=TextBox_Search}"
+                            BorderThickness="0"
+                            Margin="0 10 5 10">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/icons8-search-30.png"
+                                        Stretch="Uniform"/>
+                        </Button.Background>
+
+                    </Button>
+                    <TextBox Grid.Column="0"
+                             Margin="0 10"
+                             Name="TextBox_Search"
+                             BorderThickness="0"
+                             Text="                     "
+                             FontSize="{StaticResource labelSize}"
+                             Foreground="{StaticResource foreColorTitle}"
+                             Background="Transparent"
+                             VerticalContentAlignment="Center"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Stretch"
+                             Height="Auto">
+
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Enter"
+                                        Command="{Binding KeyDownCommand}"
+                                        CommandParameter="{Binding ElementName=TextBox_Search}">
+                                
+                            </KeyBinding>
+                        </TextBox.InputBindings>
+
+                    </TextBox>
+                </Grid>
+
+
+
+            </Grid>
+            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto">
+                <UniformGrid Columns="3"
+                             Name="wrapPanel">
+
+                </UniformGrid>
+            </ScrollViewer>
+
+        </Grid>
+    </Border>
+</Window>
