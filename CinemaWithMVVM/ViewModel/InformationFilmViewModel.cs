@@ -36,13 +36,12 @@ namespace CinemaWithMVVM.ViewModel
 
             YoutubeCommand = new RelayCommand((o) =>
             {
-                var scrollViewer = o as ScrollViewer;
-                scrollViewer!.Content = string.Empty;
+                
 
                 WebBrowser webBrowser=new WebBrowser();
 
                 webBrowser.Navigate($"https://www.youtube.com/results?search_query={Movie!.Title}+trailer");
-                scrollViewer!.Content = webBrowser;
+               
             });
         }
 
